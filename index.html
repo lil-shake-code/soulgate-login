@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SoulGate Login</title>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database-compat.js"></script>
+
+    <!-- FirebaseUI CDN -->
+
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css"
+    />
+  </head>
+  <body>
+    <header>Welcome to SoulGate Login</header>
+    <div id="firebaseui-auth-container"></div>
+    <div id="update-username">
+      <input type="text" id="new-username" placeholder="New Username" />
+      <button id="update-btn">Update Username</button>
+    </div>
+
+    <div id="your_deck">
+      <div class="grid-container" id="gc">
+        <!-- Repeat for all 10 cards -->
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
