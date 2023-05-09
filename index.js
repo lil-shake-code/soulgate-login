@@ -179,7 +179,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     //make a post request to localhost
     //make a post request to localhost
     let xhr = new XMLHttpRequest();
-    let root = "https://sneks-83e56.ue.r.appspot.com";
+    let root = "http://65.19.132.211:3001";
     let url = root + "/auth";
     xhr.open("POST", url);
     xhr.setRequestHeader("Content-Type", "application/json");
