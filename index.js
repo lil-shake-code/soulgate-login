@@ -49,16 +49,16 @@ var uiConfig = {
   privacyPolicyUrl: "<your-privacy-policy-url>",
 };
 
-// //set persistent
-// firebase
-//   .auth()
-//   .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-//   .then(function () {
-//     // Firebase Authentication persistence is enabled.
-//   })
-//   .catch(function (error) {
-//     // Handle error.
-//   });
+//set persistent
+firebase
+  .auth()
+  .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+  .then(function () {
+    // Firebase Authentication persistence is enabled.
+  })
+  .catch(function (error) {
+    // Handle error.
+  });
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -81,6 +81,9 @@ firebase.auth().onAuthStateChanged(function (user) {
     userText.style.textAlign = "center";
     userText.style.fontWeight = "bold";
     userText.style.fontSize = "30px";
+    userText.style.fontFamily = "Arial, Helvetica, sans-serif";
+
+    userDiv.appendChild(userText);
 
     //have userdiv just under firebaseui-auth-container
     var firebaseuiAuthContainer = document.getElementById(
@@ -97,8 +100,9 @@ firebase.auth().onAuthStateChanged(function (user) {
       username = snapshot.val().username;
       //show div id update-username
       document.getElementById("update-username").style.display = "block";
-      //set the input placeholder to the current username
-      document.getElementById("new-username").placeholder = username;
+      //set the text input text to soemthing
+      console.log(username);
+      document.getElementById("new-username").value = username;
       //center update-username div in the website
       document.getElementById("update-username").style.margin = "auto";
       document.getElementById("update-username").style.width = "50%";
@@ -132,8 +136,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa2CYFzWG7HhV3BPOwUW-ysU1j3oJFEITm5IegR-jitRIm6xDEtdHQmaavxoOkWLuGNJw&usqp=CAU";
 
       const cardData = [
-        { id: "card1", imageUrl: sampleUrl, boldText: "Bold Text 1" },
-        { id: "card2", imageUrl: sampleUrl, boldText: "Bold Text 2" },
         // Repeat for all 10 cards with specific data
       ];
 
@@ -207,7 +209,7 @@ const updateUsernameButton = document.getElementById("update-btn");
 updateUsernameButton.addEventListener("click", () => {
   // Get the new username from the text input
   const newUsername = document.getElementById("new-username").value;
-  if ((newUsername = "user")) {
+  if (newUsername == "user") {
     // alert("You can't use that username!");
     return;
   }
@@ -223,6 +225,7 @@ updateUsernameButton.addEventListener("click", () => {
     .ref(`users/${firebase.auth().currentUser.uid}/username`)
     .set(newUsername)
     .then(() => {
+      deckDiv.innerHTML = "";
       // Update successful.
       console.log("username updated");
       //show message username updated
