@@ -1,3 +1,19 @@
+// let xhr = new XMLHttpRequest();
+// let root = "http://65.19.132.211:3001";
+// let url = root + "/auth";
+// xhr.open("POST", url);
+// xhr.setRequestHeader("Content-Type", "application/json");
+// xhr.setRequestHeader("Authorization", "Bearer your-auth-token");
+// xhr.onreadystatechange = function () {
+//   if (xhr.readyState === XMLHttpRequest.DONE) {
+//     // handle the response here
+//     console.log(xhr.responseText);
+//   }
+// };
+// let data = { uuid: "spaceman" };
+// let payload = JSON.stringify(data);
+// xhr.send(payload);
+
 //readurl params
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -140,35 +156,35 @@ firebase.auth().onAuthStateChanged(function (user) {
       ];
 
       //for every card in the deck, create a div with the card number and show it in the deckDiv
-      for (let i = 0; i < JSON.parse(deck).length; i++) {
-        //create a div for the card
-        cardData.push({
-          id: "fcard" + i,
-          imageUrl: sampleUrl,
-          boldText: JSON.parse(deck)[i],
-        });
-      }
-      console.log(cardData);
-      //create a div of class grid-container
-      var gridContainer = document.getElementById("gc");
+      // for (let i = 0; i < JSON.parse(deck).length; i++) {
+      //   //create a div for the card
+      //   cardData.push({
+      //     id: "fcard" + i,
+      //     imageUrl: sampleUrl,
+      //     boldText: JSON.parse(deck)[i],
+      //   });
+      // }
+      // console.log(cardData);
+      // //create a div of class grid-container
+      // var gridContainer = document.getElementById("gc");
 
-      cardData.forEach((data) => {
-        //create a new cardDiv and add it to the grid of deckDiv
-        const cardDiv = document.createElement("div");
-        cardDiv.setAttribute("id", data.id);
-        cardDiv.setAttribute("class", "cardDiv");
-        //add the image to the cardDiv
-        const cardImage = document.createElement("img");
-        cardImage.setAttribute("src", data.imageUrl);
+      // cardData.forEach((data) => {
+      //   //create a new cardDiv and add it to the grid of deckDiv
+      //   const cardDiv = document.createElement("div");
+      //   cardDiv.setAttribute("id", data.id);
+      //   cardDiv.setAttribute("class", "cardDiv");
+      //   //add the image to the cardDiv
+      //   const cardImage = document.createElement("img");
+      //   cardImage.setAttribute("src", data.imageUrl);
 
-        cardDiv.appendChild(cardImage);
-        //add the card name in bold h3
-        const cardName = document.createElement("h3");
-        cardName.innerHTML = data.boldText;
-        cardDiv.appendChild(cardName);
-        //add to gridContainer
-        gridContainer.appendChild(cardDiv);
-      });
+      //   cardDiv.appendChild(cardImage);
+      //   //add the card name in bold h3
+      //   const cardName = document.createElement("h3");
+      //   cardName.innerHTML = data.boldText;
+      //   cardDiv.appendChild(cardName);
+      //   //add to gridContainer
+      //   gridContainer.appendChild(cardDiv);
+      // });
       //document.body.appendChild(gridContainer);
     });
     // ...
