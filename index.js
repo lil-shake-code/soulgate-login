@@ -197,7 +197,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     //make a post request to localhost
     //make a post request to localhost
     let xhr = new XMLHttpRequest();
-    let root = "https://b742-65-19-132-211.ngrok-free.app";
+    let root = "https://bc11-65-19-132-211.ngrok-free.app"; //3001
     let url = root + "/auth";
     xhr.open("POST", url);
     xhr.setRequestHeader("Content-Type", "application/json");
