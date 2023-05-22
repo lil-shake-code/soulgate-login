@@ -213,7 +213,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
     //FINALLY TELL THE NODE SERVER ON THE OTHER LINE IN A WEBSOCKET EVENT TO REMOVE THIS CLIENT FROM THE QUEUE
     //start a websocket connection
-    var ws = new WebSocket("ws://localhost:3000");
+    var ws = new WebSocket("wss://sneks-83e56.ue.r.appspot.com/");
     ws.onopen = function () {
       // Web Socket is connected, send data using send()
       ws.send(
