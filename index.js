@@ -196,20 +196,34 @@ firebase.auth().onAuthStateChanged(function (user) {
     //FINALLY TELL THE NODE SERVER ON THE OTHER LINE TO REMOVE THIS CLIENT FROM THE QUEUE
     //make a post request to localhost
     //make a post request to localhost
-    let xhr = new XMLHttpRequest();
-    let root = "http://192.168.1.6:3001"; //3001
-    let url = root + "/auth";
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("Authorization", "Bearer your-auth-token");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        // handle the response here
-      }
+    // let xhr = new XMLHttpRequest();
+    // let root = "http://192.168.1.6:3001"; //3001
+    // let url = root + "/auth";
+    // xhr.open("POST", url);
+    // xhr.setRequestHeader("Content-Type", "application/json");
+    // xhr.setRequestHeader("Authorization", "Bearer your-auth-token");
+    // xhr.onreadystatechange = function () {
+    //   if (xhr.readyState === XMLHttpRequest.DONE) {
+    //     // handle the response here
+    //   }
+    // };
+    // let data = { uuid: uid, queueId: queueId };
+    // let payload = JSON.stringify(data);
+    // xhr.send(payload);
+
+    //FINALLY TELL THE NODE SERVER ON THE OTHER LINE IN A WEBSOCKET EVENT TO REMOVE THIS CLIENT FROM THE QUEUE
+    //start a websocket connection
+    var ws = new WebSocket("ws://localhost:3000");
+    ws.onopen = function () {
+      // Web Socket is connected, send data using send()
+      ws.send(
+        JSON.stringify({
+          eventName: "admin_auth_push",
+          uuid: uid,
+          queueId: queueId,
+        })
+      );
     };
-    let data = { uuid: uid, queueId: queueId };
-    let payload = JSON.stringify(data);
-    xhr.send(payload);
   } else {
     // User is signed out.
     // Redirect to login page or show login button.
