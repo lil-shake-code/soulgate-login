@@ -256,6 +256,7 @@ updateUsernameButton.addEventListener("click", () => {
     .ref(`users/${firebase.auth().currentUser.uid}/username`)
     .set(newUsername)
     .then(() => {
+      alert("Username updated successfully!");
       deckDiv.innerHTML = "";
       // Update successful.
       console.log("username updated");
